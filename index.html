@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟接口服务</title>
+  </head>
+  <body>
+    <h1>模拟接口服务</h1>
+    <h3>接口测试:</h3>
+    <p>[ GET ] http://127.0.0.1:9999/DeskDir</p>
+    <p id="mock_test_desk_dir"></p>
+    <hr>
+    <p>[ POST ] http://127.0.0.1:9999/IsFolder</p>
+    <p id="mock_test_is_folder"></p>
+  </body>
+  <script>
+    window
+      .fetch("/DeskDir")
+      .then(function (response) {
+        return response.json();
+      })
+      .then((rs) => {
+        if (rs.status == 200) {
+          document.querySelector("#mock_test_desk_dir").innerHTML = rs.data;
+        }
+      });
+    window
+      .fetch("/IsFolder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify({
+          p0: "d:/OS Folder/Desktop",
+        }),
+      })
+      .then(function (response) {
+        return response.json();
+      })
+      .then((rs) => {
+        if (rs.status == 200) {
+          document.querySelector("#mock_test_is_folder").innerHTML = rs.data;
+        }
+      });
+  </script>
+</html>

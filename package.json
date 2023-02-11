@@ -1,0 +1,16 @@
+{
+  "name": "vite_mock_server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "mockjs": "^1.1.0",
+    "vite-plugin-mock": "^2.9.6"
+  },
+  "devDependencies": {
+    "vite": "^4.1.0"
+  }
+}
